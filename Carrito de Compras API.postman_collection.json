@@ -1,0 +1,406 @@
+{
+	"info": {
+		"_postman_id": "884becd8-5095-4802-9a0f-645e14d1f26f",
+		"name": "Carrito de Compras API",
+		"description": "API completa para sistema de carrito de compras con Spring Boot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3587867",
+		"_collection_link": "https://custest-4705.postman.co/workspace/CusTest-Workspace~66b3932c-32b4-42a4-a388-481c1fdcb7df/collection/3587867-884becd8-5095-4802-9a0f-645e14d1f26f?action=share&source=collection_link&creator=3587867"
+	},
+	"item": [
+		{
+			"name": "🌐 Productos",
+			"item": [
+				{
+					"name": "Obtener Todos los Productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						},
+						"description": "Obtiene todos los productos disponibles desde FakeStore API"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Producto por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products?id=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Obtiene un producto específico por su ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Producto por ID (Path)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"1"
+							]
+						},
+						"description": "Obtiene un producto específico usando el ID en el path"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Todas las Categorías",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products/categories",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"categories"
+							]
+						},
+						"description": "Obtiene todas las categorías disponibles de productos"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Productos por Categoría",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products/category/electronics",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"category",
+								"electronics"
+							]
+						},
+						"description": "Obtiene todos los productos de una categoría específica"
+					},
+					"response": []
+				},
+				{
+					"name": "Limpiar Caché de Productos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products/cache/clear",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"cache",
+								"clear"
+							]
+						},
+						"description": "Limpia el caché de productos para forzar una nueva consulta a la API externa"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "🛒 Órdenes",
+			"item": [
+				{
+					"name": "Crear Nueva Orden",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer\": {\n    \"customerId\": {{customer_id}},\n    \"firstName\": \"María Elena\",\n    \"lastName\": \"Rodríguez Sánchez\",\n    \"email\": \"maria.rodriguez@email.com\",\n    \"phone\": \"+52 55 1234 5678\",\n    \"address\": {\n      \"street\": \"Av. Insurgentes Sur 1234\",\n      \"city\": \"Ciudad de México\",\n      \"zipCode\": \"03100\"\n    }\n  },\n  \"products\": [\n    {\n      \"id\": 1,\n      \"title\": \"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops\",\n      \"price\": 109.95,\n      \"description\": \"Your perfect pack for everyday use and walks in the forest...\",\n      \"category\": \"men's clothing\",\n      \"image\": \"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg\",\n      \"rating\": {\n        \"rate\": 3.9,\n        \"count\": 120\n      }\n    },\n    {\n      \"id\": 2,\n      \"title\": \"Mens Casual Premium Slim Fit T-Shirts\",\n      \"price\": 22.3,\n      \"description\": \"Slim-fitting style, contrast raglan long sleeve...\",\n      \"category\": \"men's clothing\",\n      \"image\": \"https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg\",\n      \"rating\": {\n        \"rate\": 4.1,\n        \"count\": 259\n      }\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						},
+						"description": "Crea una nueva orden con productos seleccionados"
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Órdenes Pendientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/orders/status/Pending",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"status",
+								"Pending"
+							]
+						},
+						"description": "Obtiene todas las órdenes con estado 'Pending'"
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Órdenes Completadas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/orders/status/Completed",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"status",
+								"Completed"
+							]
+						},
+						"description": "Obtiene todas las órdenes con estado 'Completed'"
+					},
+					"response": []
+				},
+				{
+					"name": "Consultar Órdenes Canceladas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/orders/status/Cancelled",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"status",
+								"Cancelled"
+							]
+						},
+						"description": "Obtiene todas las órdenes con estado 'Cancelled'"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "💳 Pagos",
+			"item": [
+				{
+					"name": "Procesar Pago",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer\": {\n    \"customerId\": {{customer_id}},\n    \"firstName\": \"María Elena\",\n    \"lastName\": \"Rodríguez Sánchez\",\n    \"email\": \"maria.rodriguez@email.com\",\n    \"phone\": \"+52 55 1234 5678\",\n    \"address\": {\n      \"street\": \"Av. Insurgentes Sur 1234\",\n      \"city\": \"Ciudad de México\",\n      \"zipCode\": \"03100\"\n    }\n  },\n  \"products\": [\n    {\n      \"id\": 1,\n      \"title\": \"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops\",\n      \"price\": 109.95,\n      \"description\": \"Your perfect pack for everyday use and walks in the forest...\",\n      \"category\": \"men's clothing\",\n      \"image\": \"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg\",\n      \"rating\": {\n        \"rate\": 3.9,\n        \"count\": 120\n      }\n    },\n    {\n      \"id\": 2,\n      \"title\": \"Mens Casual Premium Slim Fit T-Shirts\",\n      \"price\": 22.3,\n      \"description\": \"Slim-fitting style, contrast raglan long sleeve...\",\n      \"category\": \"men's clothing\",\n      \"image\": \"https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg\",\n      \"rating\": {\n        \"rate\": 4.1,\n        \"count\": 259\n      }\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/payments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"payments"
+							]
+						},
+						"description": "Procesa el pago de una orden existente (requiere orden pendiente)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "🔍 Flujo Completo de Prueba",
+			"item": [
+				{
+					"name": "1. Verificar Productos Disponibles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						},
+						"description": "Paso 1: Verificar que hay productos disponibles para crear la orden"
+					},
+					"response": []
+				},
+				{
+					"name": "2. Crear Orden",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer\": {\n    \"customerId\": {{customer_id}},\n    \"firstName\": \"María Elena\",\n    \"lastName\": \"Rodríguez Sánchez\",\n    \"email\": \"maria.rodriguez@email.com\",\n    \"phone\": \"+52 55 1234 5678\",\n    \"address\": {\n      \"street\": \"Av. Insurgentes Sur 1234\",\n      \"city\": \"Ciudad de México\",\n      \"zipCode\": \"03100\"\n    }\n  },\n  \"products\": [\n    {\n      \"id\": 1,\n      \"title\": \"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops\",\n      \"price\": 109.95,\n      \"description\": \"Your perfect pack for everyday use and walks in the forest...\",\n      \"category\": \"men's clothing\",\n      \"image\": \"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg\",\n      \"rating\": {\n        \"rate\": 3.9,\n        \"count\": 120\n      }\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/orders",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						},
+						"description": "Paso 2: Crear una orden con productos seleccionados"
+					},
+					"response": []
+				},
+				{
+					"name": "3. Verificar Orden Creada",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/orders/status/Pending",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"status",
+								"Pending"
+							]
+						},
+						"description": "Paso 3: Verificar que la orden se creó correctamente"
+					},
+					"response": []
+				},
+				{
+					"name": "4. Procesar Pago",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customer\": {\n    \"customerId\": {{customer_id}},\n    \"firstName\": \"María Elena\",\n    \"lastName\": \"Rodríguez Sánchez\",\n    \"email\": \"maria.rodriguez@email.com\",\n    \"phone\": \"+52 55 1234 5678\",\n    \"address\": {\n      \"street\": \"Av. Insurgentes Sur 1234\",\n      \"city\": \"Ciudad de México\",\n      \"zipCode\": \"03100\"\n    }\n  },\n  \"products\": [\n    {\n      \"id\": 1,\n      \"title\": \"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops\",\n      \"price\": 109.95,\n      \"description\": \"Your perfect pack for everyday use and walks in the forest...\",\n      \"category\": \"men's clothing\",\n      \"image\": \"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg\",\n      \"rating\": {\n        \"rate\": 3.9,\n        \"count\": 120\n      }\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/payments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"payments"
+							]
+						},
+						"description": "Paso 4: Procesar el pago de la orden creada"
+					},
+					"response": []
+				},
+				{
+					"name": "5. Verificar Orden Completada",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/orders/status/Completed",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"status",
+								"Completed"
+							]
+						},
+						"description": "Paso 5: Verificar que la orden cambió a estado 'Completed'"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8082/springboot-shopping-cart",
+			"type": "string"
+		},
+		{
+			"key": "customer_id",
+			"value": "1001",
+			"type": "string"
+		}
+	]
+}
